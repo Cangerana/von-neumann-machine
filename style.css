@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #242729;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+h3 {
+    text-align: center;
+    color: #bbc0bf;
+}
+
+button {
+    text-align: center;
+    color: black;
+}
+
+textarea {
+    resize: none;
+}
+
+tbody {
+    background-color: #4c4c4c;
+    color: #bbc0bf;
+}
+
+.title {
+    text-align: center;
+}
+
+#instructions {
+    width: 50%;
+    height: 400px;
+    float: left;
+    font-size: 14px;
+    align-content: center;
+    background-color: #242729;
+}
+
+.block {
+    margin: 7px;
+    padding: 7x;
+}
+
+#doc {
+    width: 20%;
+    height: 70%;
+    float: left;
+    vertical-align: bottom;
+    color: #bbc0bf;
+}
+
+.code {
+    width: 35%;
+    height: 80%;
+    float: left;
+}
+
+.code-area {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: #00d700;
+    border: black;
+}
+
+#code-field {
+    width: 100%;
+    height: 90%;
+    float: left;
+    vertical-align: bottom;
+    background-color: black;
+    color: #00d700;
+}
+
+#opcode {
+    width: 100%;
+    height: 90%;
+    float: left;
+    vertical-align: bottom;
+    background-color: black;
+    color: #00d700;
+}
+
+.label {
+    display: block;
+}
+
+#memory {
+    width: 50%;
+    height: 400px;
+    float: right;
+    font-size: 13px;
+    background-color: #242729;
+}
+
+.memory-alocation {
+    width: 100%;
+    height: 75%;
+    align-content: center;
+    padding-top: 60px;
+}
+
+.tr td input{
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    border: 0;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #bbc0bf;
+    text-align: center;
+    padding: 1px 2px;
+}
+
+#cpu {
+    width: 100%;
+    height: 250px;
+    padding-top: 20px;
+    float: left;
+    background-color: #242729;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+#cpu h1 {
+    padding-bottom: 20px;
+}
+
+#cpu div button{
+    float: right;   
+    float: left;
+    align-content: center;
+    margin-left: 100px;
+}
+
+#alu {
+    float: left;
+    padding: none;
+    text-align: left;
+    width: 30%;
+    height: 100%;
+}
+
+div #reg {
+    width: 175px;
+    height: 100%;
+    float: left;
+    text-align: left;
+    color: white;
+    border: 0;
+    margin: 0;
+    padding: 6px 2;
+}
+
+div #mbr-div {
+    width: 55%;
+    height: 100%;
+    display: inline-block;
+    text-align: left;
+    color: white;
+    border: 0;
+    margin-left: 5px;
+    padding-left: 2px;
+}
+div #mbr-div span {
+    text-align: right;
+    margin-left: 6px;
+}
+span {
+    background-color: #4c4c4c;
+    color:  #bbc0bf;
+    border: 1px;
+}

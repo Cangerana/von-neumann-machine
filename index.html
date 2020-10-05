@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<HTMl>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="ias_script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>CPU Simulator</title>
+</head>
+
+<body onload="cleanMemory()">
+    <div id="instructions">
+        <h1 class="title">IAS instructions</h1>
+        <div id="doc" class="block">
+            <h3 class="title">Doc</h3>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+            <label class="label">jump</label>
+        </div>
+        <div class="code block">
+            <h3 class="title">Code</h3>
+            <div id="code-field">
+                <textarea id="code-text" name="code" class="code-area" autofocus style="font-size: 15px;"></textarea>
+            </div>
+            <button type="button" style="text-align: center; align-self: center;" onclick="creatOpcode()">Create
+                opcode</button>
+        </div>
+        <div class="code block">
+            <h3 class="title">OPCODE</h3>
+            <div id="opcode">
+                <textarea id="opcode-text" name="code" class="code-area" style="font-size: 15px;"></textarea>
+            </div>
+            <button type="button" style="text-align: center; align-self: center;" onclick="saveMemory()">Save
+                Code</button>
+        </div>
+    </div>
+
+
+    <div id="memory">
+        <h1 class="title">Memory</h1>
+        <div class="memory-alocation">
+            <table class="table">
+                <tbody class="tr">
+                    <tr>
+                        <td><input id="0" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="1" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="2" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="3" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="4" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="5" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="6" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="7" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="8" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="9" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="10" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="11" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="12" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="13" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="14" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="15" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="16" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="17" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="18" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="19" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="20" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="21" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="22" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="23" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="24" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="25" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="26" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="27" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="28" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="29" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="30" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="31" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="32" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="33" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="34" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="35" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="36" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="37" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="38" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="39" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="40" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="41" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="42" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="43" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="44" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="45" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="46" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="47" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="48" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="49" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="50" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="51" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="52" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="53" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="54" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="55" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="56" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="57" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="58" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="59" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="60" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="61" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="62" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="63" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="64" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="65" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="66" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="67" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="68" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="69" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="70" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="71" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="72" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="73" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="74" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="75" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="76" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="77" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="78" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="79" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="80" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="81" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="82" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="83" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="84" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="85" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="86" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="87" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="88" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="89" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="90" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="91" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="92" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="93" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="94" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="95" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="96" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="97" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="98" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                        <td><input id="99" type="text" maxlength="8" value="00000000" onchange="change_memory(event)"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div id="cpu">
+        <h1 class="title">CPU</h1>
+        <div id='alu'>
+            <div id="reg">
+                <tr>
+                    <td>REG 0: <span id="reg-0">0</span></td><br>
+                    <td>REG 1: <span id="reg-1">0</span></td><br>
+                    <td>REG 2: <span id="reg-2">0</span></td><br>
+                    <td>REG 3: <span id="reg-3">0</span></td><br>
+                    <td>REG 4: <span id="reg-4">0</span></td><br>
+                    <td>REG 5: <span id="reg-5">0</span></td><br>
+                    <td>REG 6: <span id="reg-6">0</span></td><br>
+                    <td>REG 7: <span id="reg-7">0</span></td><br>
+                </tr>
+            </div>
+            <div id="mbr-div">
+                <tr>
+                    <td>IR:  <span id="ir"  >0</span></td><br>
+                    <td>PC:  <span id="pc"  >0</span></td><br>
+                    <td>RO0: <span id="ro0" >0</span></td><br>
+                    <td>RO1: <span id="ro1" >0</span></td><br>
+                </tr>
+                <tr>
+                    <td>MBR: <span id="mbr" >0</span></td><br>
+                    <td>MAR: <span id="mar" >0</span></td><br>
+                    <td>IMM: <span id="imm" >0</span></td><br>
+                </tr>
+            </div>
+        </div>
+        <div style="float: left;">
+            <tr>
+                <td>E: <span id="e" >0</span></td><br>
+                <td>L: <span id="l" >0</span></td><br>
+                <td>G: <span id="g" >0</span></td><br>
+            </tr>
+        </div>
+        <div>
+            <button id="next" onclick="interpreter()">Next Step</button>
+            <br>
+            <br>
+            <button id="clean" onclick="cleanMemory()">Clear Memory</button>
+            <br>
+            <br>
+            <button id="reset_pc" onclick="set_pc(0)">Reset PC</button>
+        </div>
+    </div>
+</body>
+
+</HTMl>
