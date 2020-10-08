@@ -1,4 +1,7 @@
-/*----------------------- Global -----------------------*/
+//==================================================================//
+/*----------------------------- Global -----------------------------*/
+//==================================================================//
+
 instructions = []
 
 memory = []
@@ -45,7 +48,9 @@ var reg = {
     'r7': '0x07',
 }
 
-/*-------------------------- Instructions Scripts --------------------------*/
+//==================================================================//
+/*---------------------- Instructions Scripts ----------------------*/
+//==================================================================//
 
 function creatOpcode() {
     var codeText = document.getElementById('code-text').value
@@ -63,7 +68,9 @@ function saveMemory() {
     }
 }
 
+//==================================================================//
 /*-------------------------- CPU Scripts --------------------------*/
+//==================================================================//
 
 function interpreter() {
     // Busca
@@ -191,53 +198,40 @@ function hlt() {
 }
 
 function ld() {
-    // ld rX, M[Y]
     set_mbr(memory[mar])
     set_register(ro0, mbr)
 }
 
 function st() {
-    // st rX, M[Y]
     set_mbr(registers[ro0])
     set_memory(mar, mbr)
 }
 
 function add() {
-    //add rX, rY
    set_register(ro0, registers[ro0] + registers[ro1])
 }
 
 function sub() {
-    // sub rX, rY
     set_register(ro0, registers[ro0] - registers[ro1])
 }
 
 function mul() {
-    // mul rX, rY
     set_register(ro0, registers[ro0] * registers[ro1])
-
 }
 
 function div() {
-    // div rX, rY
     set_register(ro0, registers[ro0] / registers[ro1])
 }
 
 function lsh() {
-    // lsh rX, imm
     set_register(ro0, registers[ro0] << imm)
 }
 
 function rsh() {
-    // rsh rX, imm
     set_register(ro0, registers[ro0] >> imm)
 }
 
 function cmp() {
-    // cmp rX, rY
-    /* 1. Se r0 = r1, então 𝐸 = 1; senão 𝐸 = 0;
-       2. Se r0 < r1, então 𝐿 = 1; senão 𝐿 = 0;
-       3. Se r0 > r1, então 𝐺 = 1; senão 𝐺 = 0.*/
     if (registers[ro0] == registers[ro1]) {
         set_e(1)
     }else{
@@ -256,60 +250,46 @@ function cmp() {
 }
 
 function je() {
-    // je M[X]
-    // JUMP IF EQUAL TO – muda o registrador PC para o endereço de memória X caso E = 1
     if (e == 1) {
         set_pc(mar)
     }
 }
 
 function jne() {
-    // jne M[X]
-    // JUMP IF NOT EQUAL TO – muda o registrador PC para o endereço de memória X caso E = 0.
     if (e == 0) {
         set_pc(mar)
     }
 }
 
 function jl() {
-    // jl M[X]
-    // JUMP IF LOWER THAN – muda o registrador PC para o endereço de memória X caso L = 1.
     if (l == 1) {
         set_pc(mar)
     }
 }
 
 function jle() {
-    // jle M[X]
-    // JUMP IF LOWER THAN OR EQUAL TO – muda o registrador PC para o endereço de memória X caso E = 1 ou 𝐿 = 1.
     if (e == 1 || l == 1) {
         set_pc(mar)
     } 
 }
 
 function jg() {
-    // jgM[X]
-    // JUMP IF GREATER THAN – muda o registrador PC para o endereço de memória X caso G = 1.
     if (g == 1) {
         set_pc(mar)
     }
 }
 
 function jge() {
-    // jge M[X]
-    // JUMP IF GREATER THAN OR EQUAL TO – muda o registrador PC para o endereço de memória X caso E = 1 ou 𝐺 = 1.
     if (e == 1 || g == 1) {
         set_pc(mar)
     }
 }
 
 function jmp() {
-    // jmp M[X]
     set_pc(mar)
 }
 
 function movih() {
-    // movih rX, imm
     set_register(
         ro0,
         (((imm) & 0x0000ffff) << 16) & (registers[ro0] & 0x0000ffff)
@@ -317,40 +297,35 @@ function movih() {
 }
 
 function movil() {
-    // movil rX, imm
     set_register(
         ro0,
-        (((imm) & 0x0000ffff)) & (registers[ro0] & 0x00000000) // /*/*/**/*//*/*/*-/*-*/*//*//*/ */
+        (((imm) & 0x0000ffff)) & (registers[ro0] & 0x00000000)
     )
 }
 
 function addi() {
-    // addi rX, imm
     set_register(ro0, (registers[ro0] + imm))
 }
 
 function subi() {
-    // addirX, imm
     set_register(ro0, (registers[ro0] - imm))
 }
 
-function muli() {   
-    // muli rX, imm
+function muli() {
     set_register(ro0, (registers[ro0] * imm))
-
 }
 
 function divi() {
-    // divi rX, imm
     set_register(ro0, (registers[ro0] / imm))
 }
 
 function movrr() {
-    // movrr rX, rY
     set_register(ro0, registers[ro1])
 }
 
-/*-------------------------- Tools --------------------------*/
+//==================================================================//
+/*----------------------------- Tools -----------------------------*/
+//==================================================================//
 
 function words(text) {
     var lines = text.toLowerCase()
@@ -414,7 +389,7 @@ function cleanMemory() {
     var memoryInput = document.getElementsByTagName('input')
 
     for (var i = 0; i < 100; i++) {
-        memory.push('00000000')
+        memory.push(0)
         memoryInput[i].value = '00000000'
     }
 }
@@ -439,12 +414,17 @@ function decodefy(word) {
     return code
 }
 
-function change_memory(event) {
-    memory[event.target.id] = parseInt(event.target.value, 16)
+function change_memory() {
+    if (event.target.value != ''){
+        memory[event.target.id] = parseInt(event.target.value, 16)
+    }else{
+        set_memory(event.target.id, 0)
+    }
 }
 
 function set_memory(index, value) {
-    document.getElementById(index).value = value.toString(16)
+    document.getElementById(index).value = ''
+    document.getElementById(index).value = (value).toString(16)
     memory[index] = value
 }
 
@@ -499,10 +479,12 @@ function set_e(value){
     document.getElementById("e").innerHTML = value.toString(16)
     e = value
 }
+
 function set_l(value){
     document.getElementById("l").innerHTML = value.toString(16)
     l = value
 }
+
 function set_g(value){
     document.getElementById("g").innerHTML = value.toString(16)
     g = value

@@ -172,10 +172,12 @@ div #mbr-div {
     margin-left: 5px;
     padding-left: 2px;
 }
+
 div #mbr-div span {
     text-align: right;
     margin-left: 6px;
 }
+
 span {
     background-color: #4c4c4c;
     color:  #bbc0bf;
